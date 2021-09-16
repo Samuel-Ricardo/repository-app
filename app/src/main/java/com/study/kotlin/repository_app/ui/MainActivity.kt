@@ -14,6 +14,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel;
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
+    companion object {
+        private const val TAG = "TAG";
+    }
+
     private val dialog by lazy { createProgressDialog() };
     private val viewModel by viewModel<MainViewModel>();
     private val adapter by lazy { RepoListAdapter() };
@@ -31,6 +35,14 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val searchView =  menu.findItem(R.id.action_search).actionView as SearchView;
         searchView.setOnQueryTextListener(this);
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        TODO("Not yet implemented")
     }
 
     fun setup() {
@@ -64,13 +76,5 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private fun setupActionBar() {
         setSupportActionBar(binding.toolbar);
-    }
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
     }
 }
