@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupRepoList() {
         binding.rvRepos.adapter = adapter;
 
+        updateRepoListItemsOrErrorDialog();
+    }
+
+    private fun updateRepoListItemsOrErrorDialog() {
         viewModel.repos.observe(this){
             when (it) {
                 MainViewModel.State.Loading -> dialog.show();
