@@ -27,4 +27,5 @@ class RepoListAdapter: ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallbac
 
 class DiffCallback: DiffUtil.ItemCallback<Repo>(){
     override fun areItemsTheSame(oldItem: Repo, newItem: Repo) = oldItem == newItem;
+    override fun areContentsTheSame(oldItem: Repo, newItem: Repo) = oldItem.id == newItem.id;
 }
