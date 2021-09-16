@@ -2,6 +2,7 @@ package com.study.kotlin.repository_app.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log
 import android.view.Menu
 import android.widget.SearchView
 import com.study.kotlin.repository_app.R
@@ -45,7 +46,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
+       Log.e(TAG, "onQueryTextChange: $newText")
+        return false;
     }
 
     fun setup() {
