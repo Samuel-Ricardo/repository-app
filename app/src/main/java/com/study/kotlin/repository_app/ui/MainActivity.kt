@@ -11,13 +11,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel;
 
 class MainActivity : AppCompatActivity() {
 
-    private val dialog by lazy { createProgressDialog() }
-    private val viewModel by viewModel<MainViewModel>()
-    private val adapter by lazy { RepoListAdapter() }
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val dialog by lazy { createProgressDialog() };
+    private val viewModel by viewModel<MainViewModel>();
+    private val adapter by lazy { RepoListAdapter() };
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) };
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        super.onCreate(savedInstanceState);
+        setContentView(binding.root);
+
+        setup();
     }
 }
