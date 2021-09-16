@@ -1,5 +1,7 @@
 package com.study.kotlin.repository_app.ui.adapter
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +10,12 @@ import com.study.kotlin.repository_app.data.model.Repo
 import com.study.kotlin.repository_app.databinding.RepoLayoutBinding
 
 class RepoListAdapter: ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallback()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context);
+        val binding = RepoLayoutBinding.inflate(inflater, parent, false);
+        return ViewHolder(binding);
+    }
 
     inner class ViewHolder(
         private val binding: RepoLayoutBinding
