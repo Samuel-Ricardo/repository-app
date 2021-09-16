@@ -7,6 +7,7 @@ import android.widget.SearchView
 import com.study.kotlin.repository_app.R
 import com.study.kotlin.repository_app.core.createDialog
 import com.study.kotlin.repository_app.core.createProgressDialog;
+import com.study.kotlin.repository_app.core.hideSoftKeyboard
 import com.study.kotlin.repository_app.databinding.ActivityMainBinding;
 import com.study.kotlin.repository_app.presentation.MainViewModel;
 import com.study.kotlin.repository_app.ui.adapter.RepoListAdapter;
@@ -38,7 +39,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+        query?.let{viewModel.getRepoList((it))}
+        binding.root.hideSoftKeyboard()
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
