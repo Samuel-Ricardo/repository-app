@@ -2,6 +2,9 @@ package com.study.kotlin.repository_app.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu
+import android.widget.SearchView
+import com.study.kotlin.repository_app.R
 import com.study.kotlin.repository_app.core.createDialog
 import com.study.kotlin.repository_app.core.createProgressDialog;
 import com.study.kotlin.repository_app.databinding.ActivityMainBinding;
@@ -21,6 +24,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root);
 
         setup();
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        val searchView =  menu.findItem(R.id.action_search).actionView as SearchView;
+        searchView.setOnQueryTextListener(this);
+        return super.onCreateOptionsMenu(menu)
     }
 
     fun setup() {
