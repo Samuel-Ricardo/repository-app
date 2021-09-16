@@ -43,6 +43,12 @@ object DataModule {
         }
     }
 
+    private fun repositoriesModule(): Module {
+        return module{
+            single<RepoRepository> { RepoRepositoryImpl(get()) }
+        }
+    }
+
     private inline fun <reified T> createService(client: OkHttpClient, factory: GsonConverterFactory): T {
         return Retrofit.Builder()
             .baseUrl("https://api.github.com")
