@@ -6,7 +6,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-class PresentationModule {
+object PresentationModule {
 
     fun load() {
         loadKoinModules(viewModelModule())
