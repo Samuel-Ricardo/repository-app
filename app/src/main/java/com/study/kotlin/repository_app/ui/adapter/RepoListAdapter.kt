@@ -17,6 +17,10 @@ class RepoListAdapter: ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallbac
         return ViewHolder(binding);
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
     inner class ViewHolder(
         private val binding: RepoLayoutBinding
     ): RecyclerView.ViewHolder(binding.root){
