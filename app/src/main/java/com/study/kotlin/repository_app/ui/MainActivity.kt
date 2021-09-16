@@ -22,4 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         setup();
     }
+
+    private fun setup() {
+        setupActionBar();
+        binding.rvRepos.adapter = adapter;
+    }
 }
