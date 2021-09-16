@@ -12,7 +12,7 @@ import com.study.kotlin.repository_app.presentation.MainViewModel;
 import com.study.kotlin.repository_app.ui.adapter.RepoListAdapter;
 import org.koin.androidx.viewmodel.ext.android.viewModel;
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val dialog by lazy { createProgressDialog() };
     private val viewModel by viewModel<MainViewModel>();
@@ -64,5 +64,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupActionBar() {
         setSupportActionBar(binding.toolbar);
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        TODO("Not yet implemented")
     }
 }
