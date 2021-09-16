@@ -7,6 +7,7 @@ import org.koin.core.context.loadKoinModules
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 //For Koin injection
@@ -42,4 +43,11 @@ object DataModule {
         }
     }
 
+    private inline fun <reified T> createService(client: OkHttpClient, factory: GsonConverterFactory): T {
+        return Retrofit.Builder()
+            .baseUrl("https://api.github.com")
+            .client(client)
+            .addConverterFactory(factory)
+            .build().create(T::class.java)
+    }
 }
