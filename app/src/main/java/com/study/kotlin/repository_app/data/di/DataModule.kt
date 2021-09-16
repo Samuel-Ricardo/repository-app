@@ -2,6 +2,9 @@ package com.study.kotlin.repository_app.data.di
 
 import android.util.Log
 import com.google.gson.GsonBuilder
+import com.study.kotlin.repository_app.core.contract.RepoRepository
+import com.study.kotlin.repository_app.data.repositories.RepoRepositoryImpl
+import com.study.kotlin.repository_app.data.services.GitHubService
 import okhttp3.OkHttpClient
 import org.koin.core.context.loadKoinModules
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,6 +12,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 //For Koin injection
 
@@ -34,7 +38,7 @@ object DataModule {
             }
 
             single {
-                GsonConverterFactory.create(GsonBuilder.create());
+                GsonConverterFactory.create(GsonBuilder().create());
             }
 
             single {
