@@ -1,5 +1,6 @@
 package com.study.kotlin.repository_app.ui.adapter
 
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -22,5 +23,7 @@ class RepoListAdapter: ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallbac
                 .into(binding.ivOwner)
         }
     }
+}
 
+class DiffCallback: DiffUtil.ItemCallback<Repo>(){
 }
