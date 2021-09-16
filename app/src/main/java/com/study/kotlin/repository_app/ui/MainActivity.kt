@@ -27,4 +27,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBar();
         binding.rvRepos.adapter = adapter;
     }
+
+    private fun setupActionBar() {
+        setSupportActionBar(binding.toolbar);
+    }
 }
