@@ -2,7 +2,7 @@ package com.study.kotlin.repository_app.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.study.kotlin.repository_app.R;
+import com.study.kotlin.repository_app.core.createDialog
 import com.study.kotlin.repository_app.core.createProgressDialog;
 import com.study.kotlin.repository_app.databinding.ActivityMainBinding;
 import com.study.kotlin.repository_app.presentation.MainViewModel;
@@ -23,9 +23,29 @@ class MainActivity : AppCompatActivity() {
         setup();
     }
 
-    private fun setup() {
+    fun setup() {
         setupActionBar();
+        setupRepoList();
+    }
+
+    private fun setupRepoList() {
         binding.rvRepos.adapter = adapter;
+
+        viewModel.repos.observe(this){
+            when (it) {
+                MainViewModel.State.Loading -> dialog.show();
+                is MainViewModel.State.Error -> {
+                    createDialog {
+                        setMessage(it.error.message);
+                    }.show();
+                    dialog.dismiss();
+                }
+                is MainViewModel.State.Success -> {
+                    dialog.dismiss();
+                    adapter.submitList(it.list)
+                }
+            }
+        }
     }
 
     private fun setupActionBar() {
