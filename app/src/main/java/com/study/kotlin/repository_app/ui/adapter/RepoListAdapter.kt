@@ -11,7 +11,16 @@ class RepoListAdapter: ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffCallbac
     inner class ViewHolder(
         private val binding: RepoLayoutBinding
     ): RecyclerView.ViewHolder(binding.root){
+        fun bind(item: Repo) {
+            binding.tvRepoName.text = item.name;
+            binding.tvRepoDescription.text = item.description;
+            binding.tvRepoLanguage.text = item.language;
+            binding.chipStar.text = item.stargazersCount.toString()
 
+            Glide.with(binding.root.context)
+                .load(item.owner.profileImageURL)
+                .into(binding.ivOwner)
+        }
     }
 
 }
